@@ -12,7 +12,6 @@ def home():
 def marksheet():
     return render_template('marklist.html')
 
-
 def getPercent(m,t):
     p=(int(m)/int(t))*100
     return p
@@ -57,17 +56,22 @@ def result():
         getsname3=request.form['subject3']
         getsmark3=request.form['mark3']
         getstotal3=request.form['t3']
+        getsname4=request.form['subject4']
+        getsmark4=request.form['mark4']
+        getstotal4=request.form['t4']
         p1=getPercent(getsmark1,getstotal1)
         p2=getPercent(getsmark2,getstotal2)
         p3=getPercent(getsmark3,getstotal3)
+        p4=getPercent(getsmark4,getstotal4)
         g1=grade(p1)
         g2=grade(p2)
         g3=grade(p3)
+        g4=grade(p4)
         if(g1=="F" or g2=="F" or g3=="F"):
-            status=Failed
+            status="Failed"
         else:
-            status=Pass
-        return render_template('result.html',)
+            status="Pass"
+        return render_template('result.html',n=getName,r=getRegNo,s=getsem,c=getcol,s1=getsname1,s1m=getsmark1,s1t=getstotal1,g1=g1,s2=getsname2,s2m=getsmark2,s2t=getstotal2,g2=g2,s3=getsname3,s3m=getsmark3,s3t=getstotal3,g3=g3,s4=getsname4,s4m=getsmark4,s4t=getstotal4,g4=g4)
 
 
 
